@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Bienvenido a Paradise Luxury Homes, su destino para propiedades de lujo en Hacienda Pinilla.">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+   
+        <title>Inicio - Paradise Luxury Homes</title>
+        <link rel="stylesheet" href="/css/estilos.css">
+        <script defer src="/js/main.js"></script>
+</head>
+
+<body>
+    <!-- Encabezado -->
+    <div id="header-placeholder"></div>
+    <!-- Video -->
+    <div class="video-section">
+        <div class="video-container">
+            <iframe
+                src="https://www.youtube.com/embed/QxERIDUy8zk?autoplay=1&loop=1&playlist=QxERIDUy8zk&mute=1&controls=0&showinfo=0&modestbranding=1&rel=0&iv_load_policy=3"
+                frameborder="0" allowfullscreen>
+            </iframe>
+        </div>
+        <div class="video-overlay">
+            <h1>Paradise Luxury Homes</h1>
+            <p>Explora las mejores propiedades de lujo en Hacienda Pinilla, Guanacaste</p>
+        </div>
+    </div>
+
+
+    <!-- Pie de página -->
+    <footer>
+        <p>&copy; 2024 Paradise Luxury Homes - Todos los derechos reservados</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        const loginLink = document.getElementById('login-link');
+        const modal = document.getElementById('login-modal');
+        const closeModal = document.getElementById('close-modal');
+
+        if (loginLink) {
+            loginLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                modal.style.display = 'flex';
+            });
+        }
+
+        if (closeModal) {
+            closeModal.addEventListener('click', () => {
+                modal.style.display = 'none';
+            });
+        }
+
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+
+</html>

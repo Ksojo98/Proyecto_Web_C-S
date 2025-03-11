@@ -1,0 +1,212 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fdfdfd;
+    color: #333;
+}
+
+/* Encabezado */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.85);
+    padding: 15px 0;
+    z-index: 1000;
+    text-align: center;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+.contact-title {
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 20px; /* Asegura espacio entre título y subtítulo */
+}
+
+.contact-subtitle {
+    font-size: 18px;
+    margin-top: 10px;
+}
+.contact-section p {
+    display: block;
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+.logo {
+    height: 60px;
+    object-fit: contain;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 15px;
+}
+
+nav ul li {
+    display: inline-block;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 14px;
+    text-transform: uppercase;
+    padding: 8px 12px;
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #d4af37;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+}
+.property-types .lot img {
+    width: 100%; /* Hace que todas las imágenes ocupen el ancho del contenedor */
+    max-height: 250px; /* Altura máxima para mantener uniformidad */
+    object-fit: cover; /* Mantiene las proporciones sin distorsionar */
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+contact-section h2 {
+    font-size: 28px;
+    margin-bottom: 10px; /* Ajusta el espacio debajo del título */
+    font-weight: 600;
+}
+
+.contact-section p {
+    font-size: 18px;
+    margin-top: 10px; /* Espacio entre título y párrafo */
+}
+/* Ajuste del video */
+.video-section {
+    position: relative;
+    width: 100%;
+    height: 90vh;
+    overflow: hidden;
+    background-color: #000;
+    padding-top: 80px;
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.video-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.video-overlay h1 {
+    font-size: 48px;
+    font-weight: bold;
+}
+
+.video-overlay p {
+    font-size: 18px;
+}
+
+/* Estilos para el mapa */
+.map-section {
+    padding: 40px 20px;
+    text-align: center;
+    background-color: #fff;
+}
+
+.map-container {
+    width: 100%;
+    max-width: 1200px;
+    height: 700px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+
+.map-container iframe {
+    width: 100%;
+    height: 100%;
+    min-height: 600px;
+    border: none;
+}
+
+/* Simbología del mapa */
+.map-legend {
+    margin-top: 20px;
+    text-align: center;
+    background-color: #f8f8f8;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.map-legend h3 {
+    font-size: 22px;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.map-legend ul {
+    list-style: none;
+    padding: 0;
+}
+
+.map-legend li {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    margin: 8px 0;
+    color: #555;
+}
+
+.legend-box {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    margin-right: 10px;
+    border-radius: 4px;
+}
+main {
+    margin-top: 120px; /* Ajusta este valor según la altura del nav bar */
+    padding: 20px;
+}
+
+/* Pie de página */
+footer {
+    background-color: #fafafa;
+    padding: 20px;
+    text-align: center;
+    border-top: 1px solid #e0e0e0;
+}
+
+footer p {
+    margin: 0;
+    color: #666;
+}

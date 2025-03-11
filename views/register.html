@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Regístrese en Paradise Luxury Homes.">
+    <title>Registro - Paradise Luxury Homes</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet"  href="/css/estilos.css"> 
+    <script defer src="/js/main.js"></script>
+
+    
+    <style>
+        body {
+            background: linear-gradient(to bottom, #f8f9fa, #e9ecef);
+            font-family: 'Poppins', sans-serif;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 15px;
+        }
+        /* Ajustar margen para que el navbar no cubra contenido */
+        .page-content {
+            padding-top: 100px; 
+        }
+        .register-container {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            margin-top: 40px;
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+        }
+        .register-container h1 {
+            color: #d4af37;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .register-container label {
+            text-align: left;
+            display: block;
+            color: #d4af37;
+            font-size: 14px;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .register-container input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #d4af37;
+            border-radius: 5px;
+            background-color: #fff;
+            font-family: inherit;
+        }
+        .register-container button {
+            padding: 12px;
+            background-color: #d4af37;
+            color: #000;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            width: 100%;
+        }
+        .register-container button:hover {
+            background-color: #b89128;
+        }
+        .register-container .login-link {
+            margin-top: 15px;
+            display: block;
+            text-align: center;
+            color: #d4af37;
+            font-size: 14px;
+            text-decoration: none;
+        }
+        .register-container .login-link:hover {
+            text-decoration: underline;
+        }
+        /* Pie de página */
+        footer {
+            margin-top: 40px;
+            width: 100%;
+            text-align: center;
+            padding: 10px;
+            background-color: #000;
+            color: #d4af37;
+            border-top: 1px solid #d4af37;
+        }
+    </style>
+</head>
+<body>
+    <!-- Encabezado -->
+    <div id="header-placeholder"></div>
+    
+    <div class="page-content">
+        <!-- Contenedor de registro -->
+        <div class="register-container">
+            <h1>Registro</h1>
+            <form action="/register" method="post">
+                <label for="name">Nombre completo:</label>
+                <input type="text" id="name" name="name" placeholder="Ingrese su nombre completo" required>
+
+                <label for="email">Correo electrónico:</label>
+                <input type="email" id="email" name="email" placeholder="Ingrese su correo electrónico" required>
+
+                <label for="username">Usuario:</label>
+                <input type="text" id="username" name="username" placeholder="Ingrese su usuario" required>
+
+                <label for="password">Contraseña:</label>
+                <input type="password" id="password" name="password" placeholder="Ingrese su contraseña" required>
+
+                <label for="confirm-password">Confirmar contraseña:</label>
+                <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirme su contraseña" required>
+
+                <button type="submit">Registrarse</button>
+            </form>
+            <a href="login.html" class="login-link">¿Ya tienes una cuenta? Inicia sesión aquí</a>
+        </div>
+    </div>
+
+    <!-- Pie de página -->
+    <footer>
+        <p>&copy; 2024 Paradise Luxury Homes - Todos los derechos reservados</p>
+    </footer>
+</body>
+</html>

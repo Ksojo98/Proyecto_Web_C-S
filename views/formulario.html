@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Formulario de Propiedad</title>
+        <link  href="/css/estilos.css" rel="stylesheet" type="text/css"/>
+        <!-- CSS de Bootstrap -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <!-- Bootstrap Icons -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+        <script defer src="/js/main.js"></script>
+    </head>
+    <body>
+        <!-- Encabezado -->
+        <div id="header-placeholder"></div>
+
+        <!-- Contenedor principal -->
+        <div class="container mt-5">
+            <div class="card shadow">
+                <div class="card-header text-center">
+                    <h2>Formulario de Propiedad</h2>
+                </div>
+                <div class="card-body">
+                    <!-- Formulario -->
+                    <form th:action="@{/propiedad/guardar}" method="post" th:object="${propiedad}" enctype="multipart/form-data">
+                        <!-- Nombre -->
+                        <div class="mb-3">
+                            <label for="nombre" class="form-label"><i class="bi bi-card-text"></i> Nombre de la Propiedad</label>
+                            <input type="text" id="nombre" name="nombre" class="form-control" th:field="*{nombre}" required>
+                        </div>
+
+                        <!-- Descripción -->
+                        <div class="mb-3">
+                            <label for="descripcion" class="form-label"><i class="bi bi-chat-left-text"></i> Descripción</label>
+                            <textarea id="descripcion" name="descripcion" class="form-control" rows="3" th:field="*{descripcion}" required></textarea>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="idTipoPropiedad" class="form-label"><i class="bi bi-star"></i> Servicio Premium</label>
+                            <select id="idTipoPropiedad" name="idServicioPremium" class="form-select" th:field="*{tipoPropiedad}" required>
+                                <option value="" disabled selected>Seleccione un tipo de propiedad</option>
+                                <option th:each="tipo : ${tiposPropiedades}"
+                                        th:value="${tipo.idTipoPropiedad}" 
+                                        th:text="${tipo.tipoPropiedad}">
+                                </option>
+                            </select>
+                        </div>
+
+                        <!-- Servicios Premium -->
+                        <div class="mb-3">
+                            <label for="idServicioPremium" class="form-label"><i class="bi bi-star"></i> Servicio Premium</label>
+                            <select id="idServicioPremium" name="serviciosPremium" class="form-select" th:field="*{serviciosPremium}" required>
+                                <option value="" disabled selected>Seleccione un servicio</option>
+                                <option th:each="servicio : ${serviciosPremium}"
+                                        th:value="${servicio.idServicioPremium}" 
+                                        th:text="${servicio.servicioPremium}">
+                                </option>
+                            </select>
+                        </div>
+
+
+                        <!-- Número de Habitaciones -->
+                        <div class="mb-3">
+                            <label for="numHabitaciones" class="form-label"><i class="bi bi-door-closed"></i> Número de Habitaciones</label>
+                            <input type="number" id="numHabitaciones" name="numHabitaciones" class="form-control" th:field="*{numHabitaciones}" required>
+                        </div>
+
+                        <!-- Número de Baños -->
+                        <div class="mb-3">
+                            <label for="numBanos" class="form-label"><i class="bi bi-droplet"></i> Número de Baños</label>
+                            <input type="number" id="numBanos" name="numBanos" class="form-control" th:field="*{numBanos}" required>
+                        </div>
+
+                        <!-- Metros del Lote -->
+                        <div class="mb-3">
+                            <label for="mtsLote" class="form-label"><i class="bi bi-rulers"></i> Metros del Lote</label>
+                            <input type="number" id="mtsLote" name="mtsLote" class="form-control" th:field="*{mtsLote}" required>
+                        </div>
+
+                        <!-- Metros de Construcción -->
+                        <div class="mb-3">
+                            <label for="mtsConstruccion" class="form-label"><i class="bi bi-building"></i> Metros de Construcción</label>
+                            <input type="number" id="mtsConstruccion" name="mtsConstruccion" class="form-control" th:field="*{mtsConstruccion}" required>
+                        </div>
+
+                        <!-- Precio -->
+                        <div class="mb-3">
+                            <label for="precio" class="form-label"><i class="bi bi-currency-dollar"></i> Precio</label>
+                            <input type="number" id="precio" name="precio" class="form-control" th:field="*{precio}" required>
+                        </div>
+
+                        <!-- URL de Imágenes -->
+                        <div class="mb-3">
+                            <label for="urlImgExterior1" class="form-label"><i class="bi bi-image"></i> URL de Imagen Exterior 1</label>
+                            <input type="text" id="urlImgExterior1" name="urlImgExterior1" class="form-control" th:field="*{urlImgExterior1}" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="urlImgExterior2" class="form-label"><i class="bi bi-image"></i> URL de Imagen Exterior 2</label>
+                            <input type="text" id="urlImgExterior2" name="urlImgExterior2" class="form-control" th:field="*{urlImgExterior2}">
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="urlImgInterior1" class="form-label"><i class="bi bi-image"></i> URL de Imagen Interior 1</label>
+                            <input type="text" id="urlImgInterior1" name="urlImgInterior1" class="form-control" th:field="*{urlImgInterior1}" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="urlImgInterior2" class="form-label"><i class="bi bi-image"></i> URL de Imagen Interior 2</label>
+                            <input type="text" id="urlImgInterior2" name="urlImgInterior2" class="form-control" th:field="*{urlImgInterior2}">
+                        </div>
+
+                        <!-- URL de Ubicación -->
+                        <div class="mb-3">
+                            <label for="urlUbicacion" class="form-label"><i class="bi bi-geo-alt"></i> URL de Ubicación</label>
+                            <input type="text" id="urlUbicacion" name="urlUbicacion" class="form-control" th:field="*{urlUbicacion}" required>
+                        </div>
+
+                        <!-- Botón de Enviar -->
+                        <div class="d-grid">
+                            <button type="submit" class="btn">
+                                <i class="bi bi-floppy-fill"></i> Guardar Propiedad
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pie de Página -->
+        <footer class="bg-dark text-light text-center py-3 mt-4">
+            <p class="mb-0">&copy; 2024 Paradise Luxury Homes - Todos los derechos reservados</p>
+        </footer>
+
+        <!-- JS de Bootstrap -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    </body>
+</html>
+
