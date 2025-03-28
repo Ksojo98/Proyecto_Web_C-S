@@ -1,0 +1,40 @@
+
+CREATE DATABASE IF NOT EXISTS tierrasdelsol_bd;
+USE tierrasdelsol_bd;
+
+-- Users Table
+CREATE TABLE users (
+    user_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    lastname VARCHAR(100) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL, -- Utilizamos correo y contraseña para login, en lugar de hacer un espacio adicional de nombre de usuario
+    password VARCHAR(255) NOT NULL,
+    role ENUM('admin', 'user') NOT NULL DEFAULT 'user', -- todos los usuarios registrados tienen el role de user, para el rol de administrador vamos a tener que agregar o un crud o desde la base de datos darle el rol de admin
+    phone VARCHAR(15) NOT NULL,
+    registration_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+INSERT INTO users (user_id, name, lastname, email, password, role, phone, registration_date) VALUES
+(1, 'admin', 'admin', 'admin@test.com', SHA2('admin123', 256), 'admin', '1234567890', CURRENT_TIMESTAMP),
+(2, 'user', 'user', 'user@test.com', SHA2('user123', 256), 'user', '0987654321', CURRENT_TIMESTAMP);
+
+
+-- Contact Form Table
+CREATE TABLE ContactForm (
+    form_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL, 
+    phone VARCHAR(15) NOT NULL,
+    message TEXT NOT NULL,
+    creation_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Reviews Table
+CREATE TABLE Reviews (
+    review_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    comment TEXT NOT NULL,
+    rating INT CHECK (rating BETWEEN 1 AND 5),
+    creation_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE -- esto significa que solamente usuarios registrados pueden dar reseñas
+);

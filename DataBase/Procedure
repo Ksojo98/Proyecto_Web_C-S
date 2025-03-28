@@ -1,0 +1,19 @@
+DELIMITER $$
+
+CREATE PROCEDURE nuevoUsuario(
+    IN p_name VARCHAR(100),
+    IN p_lastname VARCHAR(100),
+    IN p_email VARCHAR(100),
+    IN p_password VARCHAR(255),
+    IN p_phone VARCHAR(15)
+)
+BEGIN
+    INSERT INTO users (name, lastname, email, password, role, phone, registration_date)
+    VALUES (p_name, p_lastname, p_email, SHA2(p_password, 256), 'user', p_phone, CURRENT_TIMESTAMP);
+END$$
+
+DELIMITER ;  
+
+--nota, el SHA2 es para encriptar contraseñas
+-- CALL nuevoUsuario('test', 'test', 'test@test.com', 'test123', '1234567890');
+-- este es un ejemplo de llamado del procedimiento
