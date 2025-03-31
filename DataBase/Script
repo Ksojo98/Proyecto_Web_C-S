@@ -1,6 +1,11 @@
 
-CREATE DATABASE IF NOT EXISTS tierrasdelsol_bd;
+CREATE DATABASE tierrasdelsol_bd;
 USE tierrasdelsol_bd;
+
+
+CREATE USER 'tierradesol'@'%' IDENTIFIED BY '123';
+GRANT ALL PRIVILEGES ON *.* TO 'tierradesol'@'%' WITH GRANT OPTION;
+FLUSH PRIVILEGES;
 
 -- Users Table
 CREATE TABLE users (
