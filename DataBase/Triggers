@@ -1,0 +1,95 @@
+-- Trigger para INSERT en Reviews
+DELIMITER //
+CREATE TRIGGER after_review_insert
+AFTER INSERT ON Reviews
+FOR EACH ROW
+BEGIN
+    INSERT INTO log_reviews (action_type, review_id, user_id, new_comment, new_rating, action_user)
+    VALUES ('INSERT', NEW.review_id, NEW.user_id, NEW.comment, NEW.rating, CURRENT_USER());
+END//
+DELIMITER ;
+
+-- Trigger para UPDATE en Reviews
+DELIMITER //
+CREATE TRIGGER after_review_update
+AFTER UPDATE ON Reviews
+FOR EACH ROW
+BEGIN
+    INSERT INTO log_reviews (action_type, review_id, user_id, 
+                           old_comment, new_comment, 
+                           old_rating, new_rating, 
+                           action_user)
+    VALUES ('UPDATE', NEW.review_id, NEW.user_id, 
+            OLD.comment, NEW.comment, 
+            OLD.rating, NEW.rating, 
+            CURRENT_USER());
+END//
+DELIMITER ;
+
+-- Trigger para DELETE en Reviews
+DELIMITER //
+CREATE TRIGGER before_review_delete
+BEFORE DELETE ON Reviews
+FOR EACH ROW
+BEGIN
+    INSERT INTO log_reviews (action_type, review_id, user_id, 
+                           old_comment, old_rating, 
+                           action_user)
+    VALUES ('DELETE', OLD.review_id, OLD.user_id, 
+            OLD.comment, OLD.rating, 
+            CURRENT_USER());
+END//
+DELIMITER ;
+
+-- Trigger para INSERT en Users
+DELIMITER //
+CREATE TRIGGER after_user_insert
+AFTER INSERT ON users
+FOR EACH ROW
+BEGIN
+    INSERT INTO log_users (action_type, user_id, 
+                         new_name, new_lastname, new_email, new_role, new_phone,
+                         action_user)
+    VALUES ('INSERT', NEW.user_id, 
+            NEW.name, NEW.lastname, NEW.email, NEW.role, NEW.phone,
+            CURRENT_USER());
+END//
+DELIMITER ;
+
+-- Trigger para UPDATE en Users
+DELIMITER //
+CREATE TRIGGER after_user_update
+AFTER UPDATE ON users
+FOR EACH ROW
+BEGIN
+    INSERT INTO log_users (action_type, user_id, 
+                         old_name, new_name,
+                         old_lastname, new_lastname,
+                         old_email, new_email,
+                         old_role, new_role,
+                         old_phone, new_phone,
+                         action_user)
+    VALUES ('UPDATE', NEW.user_id, 
+            OLD.name, NEW.name,
+            OLD.lastname, NEW.lastname,
+            OLD.email, NEW.email,
+            OLD.role, NEW.role,
+            OLD.phone, NEW.phone,
+            CURRENT_USER());
+END//
+DELIMITER ;
+
+-- Trigger para DELETE en Users
+DELIMITER //
+CREATE TRIGGER before_user_delete
+BEFORE DELETE ON users
+FOR EACH ROW
+BEGIN
+    INSERT INTO log_users (action_type, user_id, 
+                         old_name, old_lastname, old_email, old_role, old_phone,
+                         action_user)
+    VALUES ('DELETE', OLD.user_id, 
+            OLD.name, OLD.lastname, OLD.email, OLD.role, OLD.phone,
+            CURRENT_USER());
+END//
+DELIMITER ;

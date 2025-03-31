@@ -43,3 +43,36 @@ CREATE TABLE Reviews (
     creation_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE -- esto significa que solamente usuarios registrados pueden dar reseñas
 );
+
+-- Tabla de log para reseñas (Reviews)
+CREATE TABLE log_reviews (
+    log_id INT AUTO_INCREMENT PRIMARY KEY,
+    action_type ENUM('INSERT', 'UPDATE', 'DELETE') NOT NULL,
+    review_id INT NOT NULL,
+    user_id INT,
+    old_comment TEXT,
+    new_comment TEXT,
+    old_rating INT,
+    new_rating INT,
+    action_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    action_user VARCHAR(100) -- Podría ser el user_id del administrador que realizó el cambio
+);
+
+-- Tabla de log para usuarios (Users)
+CREATE TABLE log_users (
+    log_id INT AUTO_INCREMENT PRIMARY KEY,
+    action_type ENUM('INSERT', 'UPDATE', 'DELETE') NOT NULL,
+    user_id INT NOT NULL,
+    old_name VARCHAR(100),
+    new_name VARCHAR(100),
+    old_lastname VARCHAR(100),
+    new_lastname VARCHAR(100),
+    old_email VARCHAR(100),
+    new_email VARCHAR(100),
+    old_role ENUM('admin', 'user'),
+    new_role ENUM('admin', 'user'),
+    old_phone VARCHAR(15),
+    new_phone VARCHAR(15),
+    action_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    action_user VARCHAR(100) -- Podría ser el user_id del administrador que realizó el cambio
+);
