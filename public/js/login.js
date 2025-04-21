@@ -19,4 +19,16 @@ document.getElementById('login-form').addEventListener('submit', async (e) => {
     } else {
         alert(data.error || 'Error en el login');
     }
+    const msg = document.getElementById('loginMessage');
+
+    if (data.success) {
+        localStorage.setItem('token', data.token);
+        msg.style.color = 'green';
+        msg.textContent = `Bienvenido ${data.user.name}`;
+        setTimeout(() => window.location.href = '/', 1000);
+    } else {
+        msg.style.color = 'red';
+        msg.textContent = data.error || 'Error en el login';
+    }
+
 });

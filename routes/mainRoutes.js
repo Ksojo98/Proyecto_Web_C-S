@@ -9,6 +9,6 @@ router.get('/map', mainController.map);
 router.get('/luxuryproperties', mainController.luxuryproperties);
 router.get('/nueva_resena', mainController.nueva_resena);
 router.get('/about', mainController.about);
-router.get('/contacto', mainController.contacto);
+router.get('/contact', mainController.contact);
 
 module.exports = router;

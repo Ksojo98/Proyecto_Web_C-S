@@ -1,205 +1,205 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Inicie sesión en Paradise Luxury Homes.">
-    <title>Login - Paradise Luxury Homes</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet"  href="/css/estilos.css">
-    <script defer src="/js/main.js"></script>
-    <style>
-        * {
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            margin: 0;
-            padding: 0;
-            background: linear-gradient(to right, #000, #222);
-            color: #fff;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-
-
-        .login-wrapper {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding-top: 240px;
-            padding-bottom: 40px;
-        }
-
-        .login-container {
-            background-color: rgba(0, 0, 0, 0.9);
-            padding: 30px 30px 40px;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.6);
-            width: 100%;
-            max-width: 400px;
-            text-align: center;
-        }
-
-        .login-container h1 {
-            color: #d4af37;
-            margin-bottom: 20px;
-            font-size: 24px;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .login-container input {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #d4af37;
-            border-radius: 5px;
-            background-color: transparent;
-            color: #fff;
-            font-size: 16px;
-        }
-
-        .login-container input:focus {
-            border-color: #d4af37;
-            outline: none;
-            background-color: rgba(255, 255, 255, 0.1);
-            box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
-        }
-
-        .login-container button {
-            width: 100%;
-            padding: 12px;
-            background-color: #d4af37;
-            color: #000;
-            border: none;
-            border-radius: 5px;
-            font-size: 18px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background-color 0.3s, transform 0.2s;
-            box-shadow: 0 3px 10px rgba(212, 175, 55, 0.4);
-        }
-
-        .login-container button:hover {
-            background-color: #b89128;
-            transform: scale(1.02);
-        }
-
-        .register-link {
-            margin-top: 20px;
-            display: block;
-            color: #d4af37;
-            text-decoration: none;
-            font-size: 14px;
-        }
-
-        .register-link:hover {
-            text-decoration: underline;
-        }
-
-        footer {
-            text-align: center;
-            font-size: 14px;
-            color: #d4af37;
-            padding: 20px 0;
-            background-color: #000;
-        }
-
-        .form-message {
-            margin-top: 20px;
-            padding: 15px;
-            border-radius: 8px;
-            font-size: 16px;
-            text-align: center;
-            font-weight: 500;
-            display: none;
-        }
-
-        .form-message.success {
-            background-color: #d4edda;
-            color: #155724;
-            border: 1px solid #c3e6cb;
-        }
-
-        .form-message.error {
-            background-color: #f8d7da;
-            color: #721c24;
-            border: 1px solid #f5c6cb;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Inicie sesión en Paradise Luxury Homes." />
+  <title>Iniciar Sesión - Paradise Luxury Homes</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet"  href="/css/estilos.css"> 
+  <script defer src="/js/main.js"></script>
 </head>
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Poppins', sans-serif;
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(to right, #000, #222);
+        color: #fff;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
+
+    header {
+        width: 100%;
+        background-color: #000;
+        padding: 10px 0 0;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1000;
+        text-align: center;
+    }
+
+    .logo {
+        max-width: 180px;
+        height: auto;
+    }
+
+    nav {
+        margin-top: 10px;
+    }
+
+    nav ul {
+        list-style: none;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin: 0;
+    }
+
+    nav ul li {
+        margin: 0 15px;
+    }
+
+    nav ul li a {
+        color: white;
+        text-decoration: none;
+        font-weight: 600;
+        transition: color 0.3s;
+    }
+
+    nav ul li a:hover {
+        color: #d4af37;
+    }
+
+    .login-wrapper {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-top: 240px;
+        padding-bottom: 40px;
+    }
+
+    .login-container {
+        background-color: rgba(0, 0, 0, 0.9);
+        padding: 30px 30px 40px;
+        border-radius: 10px;
+        box-shadow: 0 4px 15px rgba(212, 175, 55, 0.6);
+        width: 100%;
+        max-width: 400px;
+        text-align: center;
+    }
+
+    .login-container h1 {
+        color: #d4af37;
+        margin-bottom: 20px;
+        font-size: 24px;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .login-container input {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #d4af37;
+        border-radius: 5px;
+        background-color: transparent;
+        color: #fff;
+        font-size: 16px;
+    }
+
+    .login-container input:focus {
+        border-color: #d4af37;
+        outline: none;
+        background-color: rgba(255, 255, 255, 0.1);
+        box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+    }
+
+    .login-container button {
+        width: 100%;
+        padding: 12px;
+        background-color: #d4af37;
+        color: #000;
+        border: none;
+        border-radius: 5px;
+        font-size: 18px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s, transform 0.2s;
+        box-shadow: 0 3px 10px rgba(212, 175, 55, 0.4);
+    }
+
+    .login-container button:hover {
+        background-color: #b89128;
+        transform: scale(1.02);
+    }
+
+    .register-link {
+        margin-top: 20px;
+        display: block;
+        color: #d4af37;
+        text-decoration: none;
+        font-size: 14px;
+    }
+
+    .register-link:hover {
+        text-decoration: underline;
+    }
+
+    footer {
+        text-align: center;
+        font-size: 14px;
+        color: #d4af37;
+        padding: 20px 0;
+        background-color: #000;
+    }
+
+    .form-message {
+        margin-top: 20px;
+        padding: 15px;
+        border-radius: 8px;
+        font-size: 16px;
+        text-align: center;
+        font-weight: 500;
+        display: none;
+    }
+
+    .form-message.success {
+        background-color: #d4edda;
+        color: #155724;
+        border: 1px solid #c3e6cb;
+    }
+
+    .form-message.error {
+        background-color: #f8d7da;
+        color: #721c24;
+        border: 1px solid #f5c6cb;
+    }
+</style>
 <body>
-    <!-- Encabezado --> 
-     <div id="header-placeholder"></div>
+  <!-- Encabezado -->
+  <div id="header-placeholder"></div>
 
-    <div class="login-wrapper">
-        <div class="login-container">
-            <h1>Iniciar Sesión</h1>
-            <form id="loginForm">
-                <div class="form-group">
-                    <input type="text" id="username" name="username" placeholder="Ingrese su usuario" required>
-                </div>
-                <div class="form-group">
-                    <input type="password" id="password" name="password" placeholder="Ingrese su contraseña" required>
-                </div>
-                <button type="submit">Ingresar</button>
-                <div id="loginMessage" class="form-message"></div>
-            </form>
-            <a href="/register" class="register-link">¿No tienes una cuenta? Regístrate aquí</a>
-        </div>
+  <div class="page-content">
+    <div class="login-container">
+      <h1>Iniciar Sesión</h1>
+      <form id="loginForm">
+        <label for="email">Correo electrónico:</label>
+        <input type="email" id="email" name="email" placeholder="Ingrese su correo" required />
+
+        <label for="password">Contraseña:</label>
+        <input type="password" id="password" name="password" placeholder="Ingrese su contraseña" required />
+
+        <button type="submit">Entrar</button>
+        <div id="loginMessage" class="form-message"></div>
+      </form>
+      <a href="register" class="register-link">¿No tienes cuenta? Regístrate aquí</a>
     </div>
+  </div>
 
-    <footer>
-        <p>&copy; 2024 Paradise Luxury Homes - Todos los derechos reservados</p>
-    </footer>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const form = document.getElementById('loginForm');
-            const messageBox = document.getElementById('loginMessage');
-
-            form.addEventListener('submit', async (e) => {
-                e.preventDefault();
-
-                const data = {
-                    username: form.username.value,
-                    password: form.password.value
-                };
-
-                try {
-                    const response = await fetch('/api/login', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(data)
-                    });
-
-                    const result = await response.json();
-
-                    if (response.ok && result.success) {
-                        messageBox.textContent = "Inicio de sesión exitoso.";
-                        messageBox.className = "form-message success";
-                        messageBox.style.display = "block";
-                        form.reset();
-                        // window.location.href = '/dashboard.html'; // Descomenta si tenés redirección
-                    } else {
-                        messageBox.textContent = result.message || "Credenciales incorrectas.";
-                        messageBox.className = "form-message error";
-                        messageBox.style.display = "block";
-                    }
-                } catch (err) {
-                    console.error(err);
-                    messageBox.textContent = "Error al intentar iniciar sesión.";
-                    messageBox.className = "form-message error";
-                    messageBox.style.display = "block";
-                }
-            });
-        });
-    </script>
+  <!-- Pie de página -->
+  <footer>
+    <p>&copy; 2024 Paradise Luxury Homes - Todos los derechos reservados</p>
+  </footer>
 </body>
 </html>
