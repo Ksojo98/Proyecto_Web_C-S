@@ -2,29 +2,50 @@ require('dotenv').config();
 const express = require('express');
 const path = require('path');
 const cors = require('cors');
+
 const mainRoutes = require('./routes/mainRoutes');
 const userRoutes = require('./routes/userRoutes');
-const apiRoutes = require('./routes/apiRoutes'); // Nuevas rutas API
+const apiRoutes = require('./routes/apiRoutes'); 
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-app.use(cors()); // Habilita CORS para todas las rutas
-app.use(express.json()); // Para parsear JSON en las peticiones
-app.use(express.urlencoded({ extended: true })); // Para formularios HTML
-app.use(express.static(path.join(__dirname, 'public'))); // Archivos estáticos
+// ======================================
+// Middleware base
+// ======================================
+app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-app.use('/', mainRoutes); // Rutas principales (vistas)
-app.use('/', userRoutes); // Rutas de usuario (vistas + /api/login|register)
-app.use('/api', apiRoutes); // Todas las demás APIs (ej: /api/reviews)
+// ======================================
+// Archivos estáticos (HTML, CSS, JS)
+// ======================================
+app.use(express.static(path.join(__dirname, 'public')));
 
+// ======================================
+// Rutas de vistas HTML (ej. "/", "/login", etc.)
+// ======================================
+app.use('/', mainRoutes);    
+app.use('/', userRoutes);    
+
+// ======================================
+// Rutas de API protegidas y lógicas de backend
+// ======================================
+app.use('/api', apiRoutes);  // API como /api/reviews, /api/pets, etc.
+
+// ======================================
+// Manejo de errores
+// ======================================
 app.use((err, req, res, next) => {
-  console.error(err.stack);
+  console.error('💥 Error en middleware global:', err.stack);
   res.status(500).send('Error interno del servidor');
 });
 
+// ======================================
+// Inicializar servidor
+// ======================================
 app.listen(PORT, () => {
   console.log(`\n=================================`);
-  console.log(`🚀 Servidor corriendo en http://localhost:${PORT}`);
+  console.log(`🚀 Servidor corriendo en: http://localhost:${PORT}`);
   console.log(`=================================\n`);
 });

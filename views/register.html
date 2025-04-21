@@ -1,53 +1,66 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Regístrese en Paradise Luxury Homes.">
-    <title>Registro - Paradise Luxury Homes</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet"  href="/css/estilos.css"> 
-    <script defer src="/js/main.js"></script>
-
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Regístrese en Paradise Luxury Homes.">
+  <title>Registro - Paradise Luxury Homes</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/estilos.css"> 
+  <script defer src="/js/main.js"></script>
 </head>
+
 <body>
-    <!-- Encabezado -->
-    <div id="header-placeholder"></div>
-    
-    <div class="page-content">
-        <!-- Contenedor de registro -->
-        <div class="register-container">
-            <h1>Registro</h1>
-            <form id="registerForm">
-                <label for="name">Nombre:</label>
-                <input type="text" id="name" name="name" placeholder="Ingrese su nombre" required />
-                
-                <label for="lastname">Apellido:</label>
-                <input type="text" id="lastname" name="lastname" placeholder="Ingrese su apellido" required />
-                
-                <label for="email">Correo electrónico:</label>
-                <input type="email" id="email" name="email" placeholder="Ingrese su correo electrónico" required />
-                
-                <label for="password">Contraseña:</label>
-                <input type="password" id="password" name="password" placeholder="Ingrese su contraseña" required />
-                
-                <label for="confirm-password">Confirmar contraseña:</label>
-                <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirme su contraseña" required />
-                
-                <label for="phone">Teléfono:</label>
-                <input type="tel" id="phone" name="phone" placeholder="Ingrese su teléfono" required />
-              
-              <button type="submit">Registrarse</button>
-              <div id="registerMessage" class="form-message"></div>
-            </form>
-            <a href="login.html" class="login-link">¿Ya tienes una cuenta? Inicia sesión aquí</a>
+  <!-- Header -->
+  <div id="header-placeholder"></div>
+
+  <main class="register-page">
+    <div class="register-wrapper">
+      <div class="register-container">
+        <h1>Crear Cuenta</h1>
+        <form id="registerForm">
+          <div class="form-group">
+            <label for="name">Nombre</label>
+            <input type="text" id="name" name="name" placeholder="Ingrese su nombre" required />
           </div>
-        </div>
-      
-    <!-- Pie de página -->
-    <footer>
-        <p>&copy; 2024 Paradise Luxury Homes - Todos los derechos reservados</p>
-    </footer>
+
+          <div class="form-group">
+            <label for="lastname">Apellido</label>
+            <input type="text" id="lastname" name="lastname" placeholder="Ingrese su apellido" required />
+          </div>
+
+          <div class="form-group">
+            <label for="email">Correo electrónico</label>
+            <input type="email" id="email" name="email" placeholder="Ingrese su correo" required />
+          </div>
+
+          <div class="form-group">
+            <label for="password">Contraseña</label>
+            <input type="password" id="password" name="password" placeholder="Ingrese su contraseña" required />
+          </div>
+
+          <div class="form-group">
+            <label for="confirm-password">Confirmar contraseña</label>
+            <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirme su contraseña" required />
+          </div>
+
+          <div class="form-group">
+            <label for="phone">Teléfono</label>
+            <input type="tel" id="phone" name="phone" placeholder="Ingrese su teléfono" required />
+          </div>
+
+          <button type="submit" class="btn-register">Registrarse</button>
+          <div id="registerMessage" class="form-message"></div>
+        </form>
+
+        <p class="login-link">¿Ya tienes cuenta? <a href="/login">Inicia sesión</a></p>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2024 Paradise Luxury Homes - Todos los derechos reservados</p>
+  </footer>
 </body>
 </html>

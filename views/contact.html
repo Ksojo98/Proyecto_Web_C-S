@@ -9,122 +9,67 @@
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
         <link rel="stylesheet"  href="/css/estilos.css">
         <script defer src="/js/main.js"></script>
-        <style>
-            body {
-                background: linear-gradient(to bottom, #f8f9fa, #e9ecef);
-                font-family: 'Poppins', sans-serif;
-                color: #333;
-                margin: 0;
-                padding: 0;
-            }
-            .container {
-                max-width: 1200px;
-                margin: 0 auto;
-                padding: 15px;
-            }
-            /* Ajustar margen para que el navbar no cubra contenido */
-            .page-content {
-                padding-top: 120px; 
-            }
-            /* Espaciado entre el título y la descripción */
-            .contact-title h2 {
-                font-size: 28px;
-                font-weight: 600;
-                margin-bottom: 15px; /* Espaciado mejorado */
-            }
-            .contact-subtitle p {
-                font-size: 18px;
-                margin-top: 5px;
-            }
-            .contact-section {
-                background: white;
-                padding: 40px;
-                border-radius: 10px;
-                box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-                margin-top: 60px;
-                text-align: center;
-            }
-            .contact-section form {
-                max-width: 600px;
-                margin: 0 auto;
-                text-align: left;
-            }
-            .contact-section label {
-                display: block;
-                font-weight: bold;
-                margin-bottom: 5px;
-            }
-            .contact-section input,
-            .contact-section textarea {
-                width: 100%;
-                padding: 10px;
-                margin-bottom: 15px;
-                border: 1px solid #ccc;
-                border-radius: 5px;
-                font-size: 16px;
-            }
-            .contact-section button {
-                width: 100%;
-                padding: 12px;
-                background-color: #d4af37;
-                color: white;
-                border: none;
-                border-radius: 5px;
-                font-size: 18px;
-                cursor: pointer;
-                transition: background-color 0.3s ease;
-            }
-            .contact-section button:hover {
-                background-color: #b89128;
-            }
-            /* Reducir el alto del navbar */
-            nav {
-                height: 15px;
-            }
-        </style>
+       
     </head>
     <body>
-        <!-- Encabezado -->
-    <!-- Encabezado -->
     <div id="header-placeholder"></div>
 
-        <div class="page-content">
-            <!-- Formulario de Contacto -->
-            <section class="contact-section container">
-                <div class="contact-title">
-                    <h2>Contáctanos</h2>
-                    <br>
-                    <p>Solicita más información o agenda una visita guiada.</p>
-                </div>
-                
-                <form action="#" method="POST">
-                    <label for="name">Nombre:</label>
-                    <input type="text" id="name" name="name" required>
-                    <label for="email">Correo Electrónico:</label>
-                    <input type="email" id="email" name="email" required>
-                    <label for="message">Mensaje:</label>
-                    <textarea id="message" name="message" rows="5" required></textarea>
+    <main>
+        <div class="contact-wrapper">
+            <div class="contact-container">
+                <h1>Contáctanos</h1>
+                <form id="contactForm">
+                    <input type="text" id="name" name="name" placeholder="Nombre completo" required>
+                    <input type="email" id="email" name="email" placeholder="Correo electrónico" required>
+                    <input type="text" id="phone" name="phone" placeholder="Número de teléfono" required>
+                    <textarea id="message" name="message" placeholder="Mensaje" rows="4" required></textarea>
                     <button type="submit">Enviar Mensaje</button>
-                    <br><br>
-                    <div class="form-message success" id="success-message" style="display: none;">Mensaje enviado con éxito.</div>
-                    <div class="form-message error" id="error-message" style="display: none;">Error al enviar el mensaje. Inténtalo de nuevo.</div> 
-                    <script>
-                        document.querySelector('form').addEventListener('submit', function(event) {
-                            event.preventDefault(); // Evita el envío real del formulario
-                            // Simula el envío exitoso del mensaje
-                            document.getElementById('success-message').style.display = 'block';
-                            setTimeout(function() {
-                                window.location.href = '/'; // Redirige a la página principal
-                            }, 2000); // Espera 2 segundos antes de redirigir
-                        });
-                    </script>
                 </form>
-            </section>
+            </div>
         </div>
-
+          
+      </main>
+      
         <!-- Pie de página -->
         <footer>
             <p>&copy; 2024 Paradise Luxury Homes - Todos los derechos reservados</p>
         </footer>
+        <script src="/js/main.js"></script> <!-- tu script general -->
+        <script src="/js/auth.js"></script> <!-- nuevo: auth -->
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+              const form = document.getElementById('contactForm');
+              
+              form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+            
+                const name = document.getElementById('name').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const phone = document.getElementById('phone').value.trim();
+                const message = document.getElementById('message').value.trim();
+            
+                try {
+                  const response = await fetch('/api/contact', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ name, email, phone, message })
+                  });
+            
+                  const result = await response.json();
+                  if (result.success) {
+                    alert('Mensaje enviado exitosamente!');
+                    form.reset();
+                  } else {
+                    alert('Error al enviar: ' + (result.error || 'Intenta de nuevo.'));
+                  }
+                } catch (error) {
+                  console.error('Error en contacto:', error);
+                  alert('Error de conexión con el servidor.');
+                }
+              });
+            });
+            </script>
+            
     </body>
 </html>
+

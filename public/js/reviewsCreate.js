@@ -1,46 +1,44 @@
+// public/js/reviewsCreate.js
+
 document.addEventListener('DOMContentLoaded', () => {
-    const reviewForm = document.getElementById('reviewForm');
-  
-    if (reviewForm) {
-      reviewForm.addEventListener('submit', async (e) => {
-        e.preventDefault();
-  
-        const token = localStorage.getItem('token');
-        if (!token) {
-          alert('Debes iniciar sesión para enviar una reseña.');
-          return window.location.href = '/login';
+  const reviewForm = document.getElementById('reviewForm');
+
+  if (reviewForm) {
+    reviewForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const comentario = document.getElementById('comentario').value.trim();
+      const estrellas = document.getElementById('estrellas').value;
+      const token = localStorage.getItem('token');
+
+      if (!token) {
+        alert('Debes iniciar sesión para dejar una reseña.');
+        window.location.href = '/login';
+        return;
+      }
+
+      try {
+        const response = await fetch('/api/reviews', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+          },
+          body: JSON.stringify({ comment: comentario, rating: estrellas })
+        });
+
+        const result = await response.json();
+
+        if (result.success) {
+          alert('¡Reseña enviada exitosamente!');
+          window.location.href = '/reviews'; // Redirigir a listado de reseñas
+        } else {
+          alert(result.error || 'Error al enviar la reseña');
         }
-  
-        const comentario = document.getElementById('comentario').value;
-        const estrellas = document.getElementById('estrellas').value;
-  
-        try {
-          const res = await fetch('/api/reviews', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-              'Authorization': `Bearer ${token}`
-            },
-            body: JSON.stringify({
-              comment: comentario,
-              rating: estrellas
-            })
-          });
-  
-          const data = await res.json();
-  
-          if (res.ok) {
-            alert('Reseña enviada con éxito!');
-            window.location.href = '/reviews'; // Redirige a ver todas las reseñas
-          } else {
-            alert(data.error || 'Error al enviar reseña');
-          }
-  
-        } catch (error) {
-          console.error('Error al crear reseña:', error);
-          alert('Error del servidor.');
-        }
-      });
-    }
-  });
-  
+      } catch (error) {
+        console.error('Error enviando reseña:', error);
+        alert('Error de conexión con el servidor');
+      }
+    });
+  }
+});
