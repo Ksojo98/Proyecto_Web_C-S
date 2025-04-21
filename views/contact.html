@@ -103,7 +103,20 @@
                     <input type="email" id="email" name="email" required>
                     <label for="message">Mensaje:</label>
                     <textarea id="message" name="message" rows="5" required></textarea>
-                    <button type="submit" class="btn">Enviar</button>
+                    <button type="submit">Enviar Mensaje</button>
+                    <br><br>
+                    <div class="form-message success" id="success-message" style="display: none;">Mensaje enviado con éxito.</div>
+                    <div class="form-message error" id="error-message" style="display: none;">Error al enviar el mensaje. Inténtalo de nuevo.</div> 
+                    <script>
+                        document.querySelector('form').addEventListener('submit', function(event) {
+                            event.preventDefault(); // Evita el envío real del formulario
+                            // Simula el envío exitoso del mensaje
+                            document.getElementById('success-message').style.display = 'block';
+                            setTimeout(function() {
+                                window.location.href = '/'; // Redirige a la página principal
+                            }, 2000); // Espera 2 segundos antes de redirigir
+                        });
+                    </script>
                 </form>
             </section>
         </div>

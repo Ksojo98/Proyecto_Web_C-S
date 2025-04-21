@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Crear una nueva reseña para Paradise Luxury Homes.">
+    <title>Nueva Reseña - Paradise Luxury Homes</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet"  href="/css/estilos.css">
+    <script defer src="/js/main.js"></script> 
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #000, #222);
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            width: 100%;
+            background-color: #000;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            text-align: center;
+            padding: 10px 0 0;
+        }
+
+        .header-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .logo {
+            max-width: 140px;
+            height: auto;
+            margin-bottom: 10px;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #d4af37;
+        }
+
+        .main-wrapper {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-top: 240px;
+            padding-bottom: 40px;
+        }
+
+        .review-container {
+            background-color: rgba(0, 0, 0, 0.9);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.6);
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .review-container h1 {
+            color: #d4af37;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 600;
+            color: #d4af37;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #d4af37;
+            border-radius: 5px;
+            background-color: transparent;
+            color: #fff;
+            font-size: 16px;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #d4af37;
+            background-color: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+        }
+
+        .review-container button {
+            width: 100%;
+            padding: 12px;
+            background-color: #d4af37;
+            color: #000;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+            box-shadow: 0 3px 10px rgba(212, 175, 55, 0.4);
+        }
+
+        .review-container button:hover {
+            background-color: #b89128;
+            transform: scale(1.02);
+        }
+
+        footer {
+            text-align: center;
+            font-size: 14px;
+            color: #d4af37;
+            padding: 20px 0;
+            background-color: #000;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div id="header-placeholder"></div>
+    <!-- Formulario para nueva reseña -->
+    <!-- Formulario para nueva reseña -->
+<div class="main-wrapper">
+    <div class="review-container">
+        <h1>Crear Nueva Reseña</h1>
+        <form action="/api/reviews" method="POST">
+
+            <div class="form-group">
+                <label for="nombre">Nombre</label>
+                <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
+            </div>
+            <div class="form-group">
+                <label for="titulo">Título de la Reseña</label>
+                <input type="text" id="titulo" name="titulo" placeholder="Ej. Una experiencia inolvidable" required>
+            </div>
+            <div class="form-group">
+                <label for="comentario">Reseña</label>
+                <textarea id="comentario" name="comentario" placeholder="Escribe tu experiencia aquí..." required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="estrellas">Calificación</label>
+                <select name="estrellas" id="estrellas" required>
+                    <option value="5">⭐️⭐️⭐️⭐️⭐️</option>
+                    <option value="4">⭐️⭐️⭐️⭐️</option>
+                    <option value="3">⭐️⭐️⭐️</option>
+                    <option value="2">⭐️⭐️</option>
+                    <option value="1">⭐️</option>
+                </select>
+            </div>
+            <button type="submit">Enviar Reseña</button>
+        </form>
+    </div>
+</div>
+
+
+    <footer>
+        <p>&copy; 2024 Paradise Luxury Homes - Todos los derechos reservados</p>
+    </footer>
+</body>
+</html>

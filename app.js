@@ -18,10 +18,6 @@ app.use('/', mainRoutes); // Rutas principales (vistas)
 app.use('/', userRoutes); // Rutas de usuario (vistas + /api/login|register)
 app.use('/api', apiRoutes); // Todas las demás APIs (ej: /api/reviews)
 
-app.use((req, res) => {
-  res.status(404).sendFile(path.join(__dirname, 'views', '404.html'));
-});
-
 app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).send('Error interno del servidor');
