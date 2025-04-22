@@ -1,10 +1,6 @@
-// middlewares/auth.js
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
 
-/**
- * Middleware para verificar el token JWT
- */
 const authenticate = (req, res, next) => {
   try {
     const authHeader = req.headers['authorization'];
@@ -15,7 +11,7 @@ const authenticate = (req, res, next) => {
     const token = authHeader.replace('Bearer ', '');
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
-    req.user = decoded; // Agrega los datos del usuario al request
+    req.user = decoded;
     next();
   } catch (error) {
     console.error('Error en authenticate:', error);
@@ -23,9 +19,6 @@ const authenticate = (req, res, next) => {
   }
 };
 
-/**
- * Middleware para verificar si el usuario tiene rol de administrador
- */
 const isAdmin = (req, res, next) => {
   if (!req.user || req.user.role !== 'admin') {
     return res.status(403).json({ error: 'Se requieren privilegios de administrador' });

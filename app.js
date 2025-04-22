@@ -31,7 +31,7 @@ app.use('/', userRoutes);
 // ======================================
 // Rutas de API protegidas y lógicas de backend
 // ======================================
-app.use('/api', apiRoutes);  // API como /api/reviews, /api/pets, etc.
+app.use('/api', apiRoutes); 
 
 // ======================================
 // Manejo de errores

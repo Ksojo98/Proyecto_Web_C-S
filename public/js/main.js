@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
     .then(response => response.text())
     .then(data => {
       document.getElementById("header-placeholder").innerHTML = data;
-      actualizarLoginMenu(); // Después de cargar el header, actualizamos el login
+      actualizarLoginMenu(); // Ejecutar luego de cargar el header
     })
     .catch(error => console.error("Error cargando el header:", error));
 
@@ -32,7 +32,6 @@ document.addEventListener('DOMContentLoaded', function () {
           localStorage.setItem('token', result.token);
           loginMessage.textContent = `Bienvenido ${result.user.name}`;
           loginMessage.style.color = 'green';
-
           setTimeout(() => window.location.href = '/', 1500);
         } else {
           loginMessage.textContent = result.error || 'Credenciales incorrectas';
@@ -80,7 +79,6 @@ document.addEventListener('DOMContentLoaded', function () {
           registerMessage.textContent = result.message || 'Usuario registrado exitosamente';
           registerMessage.style.color = 'green';
           registerForm.reset();
-
           setTimeout(() => window.location.href = '/login', 2000);
         } else {
           registerMessage.textContent = result.error || 'Error al registrarse';
@@ -99,16 +97,26 @@ document.addEventListener('DOMContentLoaded', function () {
 function actualizarLoginMenu() {
   const token = localStorage.getItem('token');
   const loginMenu = document.getElementById('loginMenu');
+  const navLinks = document.getElementById('navLinks');
 
   if (token && loginMenu) {
     try {
       const payload = JSON.parse(atob(token.split('.')[1]));
       const userName = payload.name || 'Usuario';
 
+      // Mostrar mensaje de bienvenida y logout
       loginMenu.innerHTML = `
         <span>Bienvenido, ${userName}</span>
         <button onclick="logout()" style="margin-left: 10px; background: none; border: none; color: #d4af37; cursor: pointer;">Cerrar sesión</button>
       `;
+
+      // Mostrar enlace a contactos solo si es admin
+      if (navLinks && payload.role === 'admin') {
+        const adminItem = document.createElement('li');
+        adminItem.innerHTML = `<a href="/adminContactos">Ver Contactos</a>`;
+        navLinks.appendChild(adminItem);
+      }
+
     } catch (error) {
       console.error('Error leyendo token:', error);
       localStorage.removeItem('token');
@@ -116,7 +124,7 @@ function actualizarLoginMenu() {
   }
 }
 
-// 5. Función de logout
+// 5. Función logout
 function logout() {
   localStorage.removeItem('token');
   window.location.href = '/login';
