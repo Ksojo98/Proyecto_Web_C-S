@@ -3,13 +3,14 @@ const express = require('express');
 const router = express.Router();
 const { authenticate } = require('../middlewares/auth');
 const reviewController = require('../controllers/reviewController'); // ✅ Correcto
+const apiController = require('../controllers/apiController');
 
 // Endpoints API para reseñas
 router.post('/reviews', authenticate, reviewController.createReview); // Crear reseña
 router.get('/reviews', reviewController.getAllReviews); // Ver todas las reseñas
 router.get('/myreviews', authenticate, reviewController.getMyReviews); // Ver mis reseñas
 router.delete('/reviews/:id', authenticate, reviewController.deleteReview); // Eliminar reseña
-
+router.post('/contact', apiController.submitContact);
 // Crear reseña
 router.post('/reviews', authenticate, reviewController.createReview);
 

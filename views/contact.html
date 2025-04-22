@@ -15,20 +15,25 @@
     <div id="header-placeholder"></div>
 
     <main>
-        <div class="contact-wrapper">
-            <div class="contact-container">
-                <h1>Contáctanos</h1>
-                <form id="contactForm">
-                    <input type="text" id="name" name="name" placeholder="Nombre completo" required>
-                    <input type="email" id="email" name="email" placeholder="Correo electrónico" required>
-                    <input type="text" id="phone" name="phone" placeholder="Número de teléfono" required>
-                    <textarea id="message" name="message" placeholder="Mensaje" rows="4" required></textarea>
-                    <button type="submit">Enviar Mensaje</button>
-                </form>
+      <section class="contact-wrapper">
+        <div class="contact-container">
+          <h1>Contáctanos</h1>
+          <form id="contactForm" class="contact-form-grid">
+            <div class="left-fields">
+              <input type="text" id="name" name="name" placeholder="Nombre completo" required />
+              <input type="email" id="email" name="email" placeholder="Correo electrónico" required />
+              <input type="text" id="phone" name="phone" placeholder="Número de teléfono" required pattern="[0-9]+" title="Solo se permiten números">
             </div>
+            <div class="right-fields">
+              <textarea id="message" name="message" placeholder="Mensaje" rows="6" required></textarea>
+            </div>
+            <div class="button-wrapper">
+              <button type="submit">Enviar Mensaje</button>
+            </div>
+          </form>
         </div>
-          
-      </main>
+      </section>
+    </main>
       
         <!-- Pie de página -->
         <footer>
@@ -66,10 +71,13 @@
                   console.error('Error en contacto:', error);
                   alert('Error de conexión con el servidor.');
                 }
+                    const phoneInput = document.getElementById('phone');
+                    phoneInput.addEventListener('input', function (e) {
+                    this.value = this.value.replace(/[^0-9]/g, '');
+                  });
+                });
               });
-            });
             </script>
             
     </body>
 </html>
-
