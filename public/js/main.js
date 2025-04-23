@@ -113,7 +113,7 @@ function actualizarLoginMenu() {
       // Mostrar enlace a contactos solo si es admin
       if (navLinks && payload.role === 'admin') {
         const adminItem = document.createElement('li');
-        adminItem.innerHTML = `<a href="/adminContactos">Ver Contactos</a>`;
+        adminItem.innerHTML = `<a href="/adminContact">Ver Contactos</a>`;
         navLinks.appendChild(adminItem);
       }
 

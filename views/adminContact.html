@@ -19,36 +19,39 @@
 
   <script src="/js/main.js"></script>
   <script src="/js/auth.js"></script>
+  <script src="/js/adminContact.js"></script>
   <script>
-    // Cargar contactos solo si es admin
     document.addEventListener('DOMContentLoaded', async () => {
       const token = localStorage.getItem('token');
-
+  
       if (!token) return window.location.href = '/login';
-
+  
       try {
-        const res = await fetch('/api/admin/contactos', {
+        const res = await fetch('/api/adminContacts', { // 🔁 Corregido
           headers: { Authorization: `Bearer ${token}` }
         });
-
+  
         const data = await res.json();
         const container = document.getElementById('contactsTable');
-
-        if (data.success) {
+  
+        if (data.success && data.contacts.length > 0) {
           container.innerHTML = data.contacts.map(c => `
-            <div style="border:1px solid #d4af37; padding:10px; margin-bottom:10px;">
+            <div style="border:1px solid #d4af37; padding:10px; margin-bottom:10px; background-color:#111; color:#fff; border-radius:8px;">
               <strong>${c.name}</strong> (${c.email} - ${c.phone})<br>
               <em>${new Date(c.creation_date).toLocaleString()}</em>
               <p>${c.message}</p>
             </div>
           `).join('');
         } else {
-          container.textContent = 'Error al cargar contactos.';
+          container.textContent = 'No hay contactos disponibles.';
         }
       } catch (err) {
         console.error('Error cargando contactos:', err);
+        const container = document.getElementById('contactsTable');
+        container.textContent = 'Error de conexión con el servidor.';
       }
     });
   </script>
+  
 </body>
 </html>

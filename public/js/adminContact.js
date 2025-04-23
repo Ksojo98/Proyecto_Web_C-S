@@ -1,36 +1,72 @@
 document.addEventListener('DOMContentLoaded', async () => {
     const token = localStorage.getItem('token');
+  
     if (!token) {
-      alert('Debes estar logueado como administrador');
-      return (window.location.href = '/login');
+      alert('Acceso denegado. Inicia sesión como administrador.');
+      window.location.href = '/login';
+      return;
     }
   
     try {
-      const response = await fetch('/api/admin/contactos', {
+        const res = await fetch('/api/adminContacts', {
+
+
         headers: {
-          'Authorization': `Bearer ${token}`
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`
         }
       });
-      const result = await response.json();
   
-      if (result.success) {
-        const tbody = document.querySelector('#contactTable tbody');
-        result.contacts.forEach(contact => {
-          const row = `<tr>
+      if (!res.ok) {
+        throw new Error(`Error HTTP: ${res.status}`);
+      }
+  
+      const data = await res.json();
+  
+      if (!data.success) {
+        alert(data.error || 'No se pudo cargar los contactos.');
+        return;
+      }
+  
+      const container = document.getElementById('contactTableContainer');
+  
+      if (!data.contacts || data.contacts.length === 0) {
+        container.innerHTML = '<p>No hay mensajes disponibles.</p>';
+        return;
+      }
+  
+      let table = `
+        <table border="1" cellpadding="10">
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Email</th>
+              <th>Teléfono</th>
+              <th>Mensaje</th>
+              <th>Fecha</th>
+            </tr>
+          </thead>
+          <tbody>
+      `;
+  
+      data.contacts.forEach(contact => {
+        table += `
+          <tr>
             <td>${contact.name}</td>
             <td>${contact.email}</td>
             <td>${contact.phone}</td>
             <td>${contact.message}</td>
             <td>${new Date(contact.creation_date).toLocaleString()}</td>
-          </tr>`;
-          tbody.innerHTML += row;
-        });
-      } else {
-        alert('Acceso denegado o error en el servidor');
-      }
+          </tr>
+        `;
+      });
+  
+      table += '</tbody></table>';
+      container.innerHTML = table;
+  
     } catch (error) {
-      console.error('Error al cargar contactos:', error);
-      alert('Error al cargar contactos');
+      console.error('Error cargando los contactos:', error);
+      alert('Error de conexión con el servidor');
     }
   });
   
